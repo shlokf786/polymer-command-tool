@@ -3,6 +3,7 @@ const fs = require("fs")
 const path = require('path');
 
 window.ELECTRON_DISABLE_SECURITY_WARNINGS=true;
+window.originalFolderPath="";
 // Expose protected methods that allow the renderer process to use
 // the ipcRenderer without exposing the entire object
 contextBridge.exposeInMainWorld("api", {
@@ -16,6 +17,9 @@ contextBridge.exposeInMainWorld("api", {
     getCompleteFileListForPath: (dirPath) => {
         return getAllFiles(dirPath);
     },
+    _setOriginalFolderPath: (folderPath) =>{
+        window.originalFolderPath=folderPath;
+    }
 });
 function getAllFiles(dirPath, arrayOfFiles) {
     files = fs.readdirSync(dirPath)
@@ -28,7 +32,7 @@ function getAllFiles(dirPath, arrayOfFiles) {
         } 
         else {
             FullPath=path.join(dirPath, "/", file)
-            arrayOfFiles.push(FullPath.replace(__dirname.toString(),''))
+            arrayOfFiles.push(FullPath.replace(window.originalFolderPath,''))
 		}
 	})
 	return arrayOfFiles;

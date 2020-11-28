@@ -78,7 +78,6 @@ app.on('activate', () => {
 
 
 ipcMain.on('open-settings',(event, args) => {
-    console.log("Got the events");
     if(settingWindow.isVisible())
         settingWindow.hide();
     else

@@ -11,3 +11,11 @@ body {
 .col{
 	margin:10px;
 }
+.overflow-only-x{
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.overflow-only-y{
+  overflow-x: hidden;
+  overflow-y: auto;
+}
