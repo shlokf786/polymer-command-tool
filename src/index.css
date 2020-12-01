@@ -19,3 +19,9 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
 }
+.listBoxDiv{
+  height: 440px;
+}
+ul{
+  width: 100%;
+}
